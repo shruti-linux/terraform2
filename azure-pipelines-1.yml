@@ -1,17 +1,3 @@
-# Starter pipeline
-- task: TerraformTaskV4@4
-  inputs:
-    provider: 'azurerm'
-    command: 'init'
-    backendServiceArm: 'Pay-As-You-Go(79c65e59-aadb-45ab-9a43-3e10d9e5225e)'
-    backendAzureRmResourceGroupName: 'shruti2345'
-    backendAzureRmStorageAccountName: 'shrutikulshreshta12'
-    backendAzureRmContainerName: 'shruti-cont'
-    backendAzureRmKey: 'pipelineshruti.tf'
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - main
 
@@ -19,15 +5,8 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
 - task: TerraformTaskV4@4
-    inputs:
+  inputs:
       provider: 'azurerm'
       command: 'init'
       backendServiceArm: 'Pay-As-You-Go(79c65e59-aadb-45ab-9a43-3e10d9e5225e)'
@@ -37,6 +16,6 @@ steps:
       backendAzureRmKey: 'shrutipipelinr.tf'
 - task: TerraformTaskV4@4
   inputs:
-    provider: 'azurerm'
-    command: 'apply'
-    environmentServiceNameAzureRM: 'Pay-As-You-Go(79c65e59-aadb-45ab-9a43-3e10d9e5225e)'
+      provider: 'azurerm'
+      command: 'apply'
+      environmentServiceNameAzureRM: 'Pay-As-You-Go(79c65e59-aadb-45ab-9a43-3e10d9e5225e)'
