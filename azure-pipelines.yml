@@ -1,0 +1,22 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: TerraformTaskV4@4
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'Pay-As-You-Go(79c65e59-aadb-45ab-9a43-3e10d9e5225e)'
+    backendAzureRmResourceGroupName: 'shruti2345'
+    backendAzureRmStorageAccountName: 'shrutikulshreshta12'
+    backendAzureRmContainerName: 'shruti-cont'
+    backendAzureRmKey: 'pipeline.tfstate'
+
+- task: TerraformTaskV4@4
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    environmentServiceNameAzureRM: 'Pay-As-You-Go(79c65e59-aadb-45ab-9a43-3e10d9e5225e)'
